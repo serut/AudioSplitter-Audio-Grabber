@@ -1,0 +1,24 @@
+{
+    "name": "AudioSplitter Audio Grabber",
+    "version": "0.2",
+    "description": "Add files that you watch on youtube into the tracklist of your choice",
+    "manifest_version": 2,
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": true
+    },
+    "browser_action": {
+        "default_icon": "icon.png",
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [{
+        "matches": ["https://www.youtube.com/*"],
+        "js": ["parser.js"]
+    }],
+    "permissions": [
+        "storage",
+        "tabs", 
+        "*://audiosplitter.fm/*"
+    ],
+    "content_security_policy": "script-src 'self'; object-src 'self'"
+}
