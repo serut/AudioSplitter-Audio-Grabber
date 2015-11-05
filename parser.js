@@ -16,12 +16,8 @@ function getParams(url){
 makeCoffe = function() {
 
     var params = {};
-    params["playlistId"] = 7701714;
     params["song"] = [{
-        "source": "youtube",
-        "relevance": 0, // Relevant ?
-        "splitCount": 0,  // Relevant ?
-        "$$hashKey": "0N6" // Relevant ?
+        "source": "youtube"
     }];
     if (document.querySelectorAll("#watch7-content link[itemprop=thumbnailUrl]").length > 0) {
         params["song"][0]["image"] = document.querySelectorAll("#watch7-content link[itemprop=thumbnailUrl]")[0].href;
@@ -36,7 +32,7 @@ makeCoffe = function() {
         params["song"][0]["channel"] = document.querySelectorAll("#watch7-content span[itemprop=author] link")[0].href.split("user/")[1];
     }
 
-
+    
     if (document.querySelectorAll("#watch7-content meta[itemprop=name]").length > 0) {
         var videoTitle = document.querySelectorAll("#watch7-content meta[itemprop=name]")[0].getAttribute("content");
         var tabVideoTitle = videoTitle.split("-");
@@ -67,8 +63,6 @@ analyseURL = function() {
         if (urlSplited.v !== previousVideo) {
             previousVideo = urlSplited.v;
             makeCoffe();
-        } else {
-            console.log("Same video !!!")
         }
     } else {
         console.log("Not a video !!!")
