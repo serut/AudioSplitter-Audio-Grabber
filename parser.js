@@ -32,14 +32,23 @@ makeCoffe = function() {
     if (document.querySelectorAll("#watch7-content link[itemprop=url]").length > 0) {
         params["song"][0]["url"] = document.querySelectorAll("#watch7-content link[itemprop=url")[0].href;
     }
-    if (document.querySelectorAll("#watch7-content meta[itemprop=name]").length > 0) {
-        params["song"][0]["title"] = document.querySelectorAll("#watch7-content meta[itemprop=name]")[0].getAttribute("content");
-    }
     if (document.querySelectorAll("#watch7-content span[itemprop=author] link").length > 0) {
         params["song"][0]["channel"] = document.querySelectorAll("#watch7-content span[itemprop=author] link")[0].href.split("user/")[1];
     }
-    if (document.querySelectorAll(".yt-user-info a").length > 0) {
-        params["song"][0]["artist"] = document.querySelectorAll(".yt-user-info a")[0].text;
+
+
+    if (document.querySelectorAll("#watch7-content meta[itemprop=name]").length > 0) {
+        var videoTitle = document.querySelectorAll("#watch7-content meta[itemprop=name]")[0].getAttribute("content");
+        var tabVideoTitle = videoTitle.split("-");
+        if (tabVideoTitle.length === 2) {
+            params["song"][0]["title"] = tabVideoTitle[0];
+            params["song"][0]["artist"] = tabVideoTitle[1];
+        } else {
+            params["song"][0]["title"] = videoTitle;
+            if (document.querySelectorAll(".yt-user-info a").length > 0) {
+                params["song"][0]["artist"] = document.querySelectorAll(".yt-user-info a")[0].text;
+            }
+        }
     }
     //console.log(params);
     chrome.runtime.sendMessage({
