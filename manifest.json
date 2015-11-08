@@ -1,7 +1,7 @@
 {
     "name": "AudioSplitter Audio Grabber",
     "version": "0.4",
-    "description": "Add files that you watch on youtube into the tracklist of your choice",
+    "description": "Add everything you watch on youtube into the AudioSplitter tracklist of your choice !",
     "manifest_version": 2,
     "background": {
         "scripts": ["background.js"],
