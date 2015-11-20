@@ -25,7 +25,7 @@ chrome.runtime.onMessage.addListener(
         var formData = new FormData();
         formData.append('playlistId', localStorage['audiosplitter.playlist']);
         formData.append('song', JSON.stringify(r.data["song"]));
-        if (localStorage['audiosplitter.playlist'] !== undefined) {
+        if (localStorage['audiosplitter.playlist'] !== undefined && localStorage['audiosplitter.playlist'].length > 0) {
             request.send(formData);
         } else {
             bkg.console.log("Request canceled")

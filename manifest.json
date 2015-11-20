@@ -1,23 +1,22 @@
 {
     "name": "AudioGrabber for AudioSplitter",
-    "version": "0.5",
+    "version": "0.6",
     "description": "Add everything you watch on youtube into the AudioSplitter tracklist of your choice !",
     "manifest_version": 2,
     "background": {
-        "scripts": ["background.js"],
+        "scripts": ["src/background/background.js"],
         "persistent": true
     },
     "browser_action": {
         "default_icon": "icon128.png",
-        "default_popup": "popup.html"
+        "default_popup": "src/popup/popup.html"
     },
     "content_scripts": [{
         "matches": ["https://www.youtube.com/*"],
-        "js": ["parser.js"]
+        "js": ["src/content-scripts/parser.js"]
     }],
     "permissions": [
         "storage",
-        "tabs", 
         "*://audiosplitter.fm/*"
     ],
     "content_security_policy": "script-src 'self'; object-src 'self'",
