@@ -46,12 +46,17 @@ makeCoffe = function() {
             }
         }
     }
-    //console.log(params);
-    chrome.runtime.sendMessage({
-        method: 'POST',
-        url: 'http://audiosplitter.fm/assets/api/playlists/addSong',
-        data: params
-    });
+
+    // The video genre must be Music
+    if (document.querySelectorAll("#watch7-content  meta[itemprop=genre]").length > 0 &&
+        "Music" == document.querySelectorAll("#watch7-content  meta[itemprop=genre]")[0].getAttribute("content")) {
+        //console.log(params);
+        chrome.runtime.sendMessage({
+            method: 'POST',
+            url: 'http://audiosplitter.fm/assets/api/playlists/addSong',
+            data: params
+        });
+    }
 
 }
 

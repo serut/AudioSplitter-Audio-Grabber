@@ -1,6 +1,6 @@
 {
     "name": "AudioGrabber for AudioSplitter",
-    "version": "0.6",
+    "version": "1.0",
     "description": "Add everything you watch on youtube into the AudioSplitter tracklist of your choice !",
     "manifest_version": 2,
     "background": {
